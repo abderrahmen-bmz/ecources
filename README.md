@@ -1,2 +1,2 @@
-# ecources
+# ecourses
 Explore Courses 
