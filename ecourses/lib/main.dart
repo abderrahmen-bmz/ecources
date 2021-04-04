@@ -3,6 +3,8 @@ import 'package:ecourses/constants.dart';
 import 'package:ecourses/model/course.dart';
 import 'package:flutter/material.dart';
 
+import 'components/lists/recent_course_list.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -29,9 +31,32 @@ class MyApp extends StatelessWidget {
             child: Column(
               children: [
                 HomeScreenNavBar(),
-                RecentCourseCard(
-                  course: recentCourses[0],
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        'Recents',
+                        style: kLargeTitleStyle,
+                      ),
+                      SizedBox(
+                        height: 5.0,
+                      ),
+                      Text(
+                        '23 courses , more coming',
+                        style: kSubtitleStyle,
+                      ),
+                    ],
+                  ),
                 ),
+                // RecentCourseCard(
+                //   course: recentCourses[0],
+                // ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                RecentCourseList(),
               ],
             ),
           ),
@@ -40,6 +65,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
 
 class HomeScreenNavBar extends StatelessWidget {
   @override
@@ -55,6 +82,9 @@ class HomeScreenNavBar extends StatelessWidget {
             Icons.notifications,
             color: kPrimaryLabelColor,
           ),
+          SizedBox(
+            width: 16.0,
+          ),
           CircleAvatar(
             radius: 18.0,
             backgroundImage: AssetImage('asset/images/profile.jpg'),
@@ -65,20 +95,49 @@ class HomeScreenNavBar extends StatelessWidget {
   }
 }
 
-
 class SearchFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-          child: Container(
-         child: TextField(
-           cursorColor: kPrimaryLabelColor,
-           decoration: InputDecoration,
-         ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 12.0, right: 33.0),
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(14.0),
+              boxShadow: [
+                BoxShadow(
+                  color: kShadowColor,
+                  offset: Offset(0, 12),
+                  blurRadius: 16.0,
+                )
+              ]),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: TextField(
+              cursorColor: kPrimaryLabelColor,
+              decoration: InputDecoration(
+                icon: Icon(
+                  Icons.search,
+                  color: kPrimaryLabelColor,
+                  size: 20.0,
+                ),
+                border: InputBorder.none,
+                hintText: "Search for courses",
+                hintStyle: kSearchPlaceholderStyle,
+              ),
+              style: kSearchTextStyle,
+              onChanged: (newText) {
+                print(newText);
+              },
+            ),
+          ),
+        ),
       ),
     );
   }
 }
+
 class SidebarButton extends StatelessWidget {
   const SidebarButton({
     Key key,
