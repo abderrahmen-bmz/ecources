@@ -57,7 +57,7 @@ class RecentCourseCard extends StatelessWidget {
                 ),
                 Expanded(
                   child: Image.asset(
-                    'asset/illustration/${course.illustration}',
+                    'asset/illustrations/${course.illustration}',
                     fit: BoxFit.cover,
                   ),
                 ),
