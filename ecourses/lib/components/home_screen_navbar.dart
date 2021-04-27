@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-
 import '../constants.dart';
 
 class HomeScreenNavBar extends StatelessWidget {
+    const HomeScreenNavBar({
+    @required this.triggerAnimation,
+    Key key,
+  }) : super(key: key);
+
+  final Function triggerAnimation;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -10,8 +15,8 @@ class HomeScreenNavBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          //      SidebarButton(),
-               SearchFieldWidget(),
+          SidebarButton(triggerAnimation: triggerAnimation,),
+          SearchFieldWidget(),
           Icon(
             Icons.notifications,
             color: kPrimaryLabelColor,
@@ -72,43 +77,43 @@ class SearchFieldWidget extends StatelessWidget {
   }
 }
 
-// class SidebarButton extends StatelessWidget {
-//   const SidebarButton({
-//     Key key,
-//   }) : super(key: key);
+class SidebarButton extends StatelessWidget {
+  const SidebarButton({
+    @required this.triggerAnimation,
+    Key key,
+  }) : super(key: key);
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return RawMaterialButton(
-//       onPressed: () {
-//         print('Sidebar button pressed');
-//       },
-//       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-//       highlightColor: Colors.transparent,
-//       splashColor: Colors.transparent,
-//       constraints: BoxConstraints(
-//         maxHeight: 40.0,
-//         maxWidth: 40.0,
-//       ),
-//       child: Container(
-//         decoration: BoxDecoration(
-//           color: Colors.white,
-//           borderRadius: BorderRadius.circular(14.0),
-//           boxShadow: [
-//             BoxShadow(
-//               color: kShadowColor,
-//               offset: Offset(0, 12),
-//               blurRadius: 16.0,
-//             ),
-//           ],
-//         ),
-//         child: Image.asset('asset/icons/icon-sidebar.png'),
-//         color: kPrimaryLabelColor,
-//       ),
-//       padding: EdgeInsets.symmetric(
-//         horizontal: 12.0,
-//         vertical: 14.0,
-//       ),
-//     );
-//   }
-// }
+  final Function triggerAnimation;
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      onPressed: triggerAnimation,
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      constraints: BoxConstraints(
+        maxWidth: 40.0,
+        maxHeight: 40.0,
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(14.0),
+            boxShadow: [
+              BoxShadow(
+                color: kShadowColor,
+                offset: Offset(0, 12),
+                blurRadius: 16.0,
+              )
+            ]),
+        child: Image.asset(
+          'asset/icons/icon-sidebar.png',
+          color: kPrimaryLabelColor,
+        ),
+        padding: EdgeInsets.symmetric(
+          horizontal: 12.0,
+          vertical: 14.0,
+        ),
+      ),
+    );
+  }
+}

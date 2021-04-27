@@ -16,7 +16,7 @@ class ExploreCourseCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(41.0),
         child: Container(
           height: 120.0,
-          width: 280,
+          width: 280.0,
           decoration: BoxDecoration(gradient: course.background),
           child: Padding(
             padding: EdgeInsets.only(left: 32.0),

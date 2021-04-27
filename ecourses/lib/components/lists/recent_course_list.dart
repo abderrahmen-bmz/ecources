@@ -38,23 +38,27 @@ class _RecentCourseListState extends State<RecentCourseList> {
           width: double.infinity,
           child: PageView.builder(
             itemBuilder: (context, index) {
-              return Opacity
-                (
-                  opacity: currentPage == index ? 0.1 : 0.5,
-                child: RecentCourseCard(
-                  course: recentCourses[index],
-                ),
+              return RecentCourseCard(
+                course: recentCourses[index],
               );
+              // return Opacity(
+              //   opacity: currentPage == index ? 0.1 : 0.5,
+              //   child: RecentCourseCard(
+              //     course: recentCourses[index],
+              //   ),
+              // );
             },
             itemCount: recentCourses.length,
             controller: PageController(
               initialPage: 0,
-              viewportFraction: 0.63,
+              viewportFraction: 0.75,
             ),
             onPageChanged: (index) {
-              setState(() {
-                currentPage = index;
-              });
+              setState(
+                () {
+                  currentPage = index;
+                },
+              );
             },
           ),
         ),
